@@ -10,10 +10,15 @@ def translate(file):
     with sr.AudioFile(AUDIO_FILE) as source:
         audio = r.record(source) # read the entire audio file
 
-    # recognize speech using Sphinx
+    # recognize speech using IBM Speech to Text
+    IBM_USERNAME = "49c8eb61-b39e-4fff-83f4-69cb9b587177"
+    IBM_PASSWORD = "oy8PkRiX2sYL"
     try:
-        return(r.recognize_sphinx(audio))
+        result = r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD)
+        print(result)
+        print(" ")
+        return result
     except sr.UnknownValueError:
-        print("Sphinx could not understand audio")
+        print("IBM Speech to Text could not understand audio")
     except sr.RequestError as e:
-        print("Sphinx error; {0}".format(e))
+        print("Could not request results from IBM Speech to Text service; {0}".format(e))
