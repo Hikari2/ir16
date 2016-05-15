@@ -1,17 +1,17 @@
 import speech_text
+import os
 import tonality
 
-file = 'sound.wav'
+def main(args):
+    text = args[0]
+    print('Analyzing...')
+    file = args[1]
+    result = tonality.analyze(text, file)
 
-print('Converting...')
+    print('Done!')
+	      
+    print(result)
 
-text = speech_text.translate(file)
-
-print(text)
-print('Analyzing...')
-
-result = tonality.analyze(text, file)
-
-print('Done!')
-      
-print(result)
+if __name__ == "__main__":
+    import sys
+    main(sys.argv[1:])
