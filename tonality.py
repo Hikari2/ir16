@@ -4,17 +4,15 @@ import json
 import urllib.parse
 import urllib.request
 
-def analyze(text, id):
+def analyze(texts):
     apikey = '97206d6e38358170e97b3600b84cbc62'
     endpoint = 'https://api.gavagai.se/v3/tonality'
+
+    text_payload = [{'body': t, 'id': i} for i,t in enumerate(texts)]
+
     payload = {
         "language": "en",
-        "texts": [
-        {
-          "body": text,
-          "id": id
-        }
-      ]
+        "texts": text_payload
     }
 
     json_data = json.dumps(payload).encode('utf8')
@@ -24,8 +22,11 @@ def analyze(text, id):
 
     headers = {'Content-Type': 'application/json'}
 
-
     request = urllib.request.Request(url, data=json_data, headers=headers)
     response = urllib.request.urlopen(request).read()
 
-    return response
+    # Parse to Json format
+    as_string = response.decode("UTF-8")
+    as_json = json.loads(as_string)
+
+    return as_json

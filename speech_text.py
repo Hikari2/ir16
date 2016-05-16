@@ -1,9 +1,22 @@
 import speech_recognition as sr
+import os
 
 def translate(file):
     # obtain path to file in the same folder as this script
     from os import path
-    AUDIO_FILE = path.join(path.dirname(path.realpath(__file__)), file)
+    full_path = path.dirname(path.realpath(__file__))
+    name = path.splitext(path.basename(file))[0] + ".txt"
+    AUDIO_FILE = path.join(full_path, file)
+
+    directory = full_path + "/text_to_speech"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    if os.path.isfile(directory+"/"+name):
+        print(file + " is already processed, returning from disk")
+        with open(directory+"/"+name,"r") as f:
+            return next(f)
+
 
     # use the audio file as the audio source
     r = sr.Recognizer()
@@ -13,10 +26,10 @@ def translate(file):
     # recognize speech using IBM Speech to Text
     IBM_USERNAME = "49c8eb61-b39e-4fff-83f4-69cb9b587177"
     IBM_PASSWORD = "oy8PkRiX2sYL"
-    try:
+    try:        
         result = r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD)
-        print(result)
-        print(" ")
+        with open(directory+"/"+name,"w+") as f:
+            print(str(result),file=f)
         return result
     except sr.UnknownValueError:
         print("IBM Speech to Text could not understand audio")
