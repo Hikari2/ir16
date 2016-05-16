@@ -16,7 +16,10 @@ def translate(file):
     if os.path.isfile(directory+"/"+name):
         print(file + " is already processed, returning from disk")
         with open(directory+"/"+name,"r") as f:
-            return next(f)
+            ret_str = ""
+            for line in f:
+                ret_str += line+"\n"
+            return ret_str;
 
 
     # use the audio file as the audio source
