@@ -9,7 +9,6 @@ def analyze(texts):
     endpoint = 'https://api.gavagai.se/v3/tonality'
 
     text_payload = [{'body': t, 'id': i} for i,t in enumerate(texts)]
-
     payload = {
         "language": "en",
         "texts": text_payload
