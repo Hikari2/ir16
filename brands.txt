@@ -1,5 +1,3 @@
-Watson
-Wendys
-Burger King
-world
-gale
+cards
+velocity
+emotion

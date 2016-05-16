@@ -7,12 +7,13 @@ import subprocess
 
 USED_FIELDS = ['positivity', 'negativity']
 
-AUDIO_FILE = 'audio/Us_English_Broadband_Sample_2.wav'
+AUDIO = 'Us_English_Broadband_Sample_2'
 
 
+# Extract sentences containing brand name
 def extract_sentences(text, brand):
-    subprocess.call("./grep.sh "+brand, shell=True)
-    with open('sentences.txt', 'r') as grepResult:
+    subprocess.call("./grep.sh " + AUDIO + '.txt ' + brand, shell=True)
+    with open('grepResult.txt', 'r') as grepResult:
         sentences = grepResult.readlines()
     return sentences
 
@@ -76,12 +77,14 @@ def pretty_print_response(response):
 
 
 
-print("Speech to text")
-text = speech_text.translate(AUDIO_FILE)
-with open('translated_text.txt', 'w') as translated_text:
-    translated_text.write(text)
 
-# Go through list of brands
+
+
+print("Speech to text")
+text = speech_text.translate('audio/'+AUDIO+'.wav')
+
+print("Sentiment analysis")
+# Iterate through brands
 with open('brands.txt', 'r') as brands:
     for brand in brands:
         
@@ -89,7 +92,6 @@ with open('brands.txt', 'r') as brands:
         sentences = extract_sentences(text, brand)
 
         if sentences:
-            print("Sentiment analysis")
             result = tonality.analyze(sentences)
                 
             # Get the fields we are interested in

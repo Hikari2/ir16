@@ -2,4 +2,4 @@
 
 clear
 
-cat translated_text.txt|grep $1 >  sentences.txt
+cat text_to_speech/$1|grep $2>  grepResult.txt
