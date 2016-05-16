@@ -3,37 +3,18 @@ import os
 import tonality
 import json
 import numpy as np
+import subprocess
 
 USED_FIELDS = ['positivity', 'negativity']
 
-def main(args):
-    # Args as soundfile.wav company1 company2...
-    file = args[0]
-    company_names = args[1:]
-
-    print("Speech to text")
-    speech = speech_text.translate(file)
-
-    # Split into n-grams or whatever here
-    sentences = extract_sentences(speech, company_names)
-
-    print("Sentiment analysis")
-    result = tonality.analyze(sentences)
-    
-    # Get the fields we are interested in
-    scores = [extract_scores(sentiments) for sentiments in result["texts"]]
-
-    # Calculate the final sentiment
-    verdict = extract_aggregate(scores)
-
-    print("--- RESULTS FOR %s---"%file)
-    for key, value in verdict.items():
-        print(key, value)
+AUDIO_FILE = 'audio/Us_English_Broadband_Sample_2.wav'
 
 
-def extract_sentences(speech, company_names):
-    # TODO SENTENCE EXTRACTION HERE
-    return [speech]
+def extract_sentences(text, brand):
+    subprocess.call("./grep.sh "+brand, shell=True)
+    with open('sentences.txt', 'r') as grepResult:
+        sentences = grepResult.readlines()
+    return sentences
 
 
 # The aggregate function for all sentences
@@ -91,6 +72,32 @@ def pretty_print_response(response):
                     print(key,value)
 
 
-if __name__ == "__main__":
-    import sys
-    main(sys.argv[1:])
+
+
+
+
+print("Speech to text")
+text = speech_text.translate(AUDIO_FILE)
+with open('translated_text.txt', 'w') as translated_text:
+    translated_text.write(text)
+
+# Go through list of brands
+with open('brands.txt', 'r') as brands:
+    for brand in brands:
+        
+        # Split into n-grams or whatever here
+        sentences = extract_sentences(text, brand)
+
+        if sentences:
+            print("Sentiment analysis")
+            result = tonality.analyze(sentences)
+                
+            # Get the fields we are interested in
+            scores = [extract_scores(sentiments) for sentiments in result["texts"]]
+
+            # Calculate the final sentiment
+            verdict = extract_aggregate(scores)
+
+            print("--- RESULTS FOR %s---"%brand)
+            for key, value in verdict.items():
+                print(key, value)

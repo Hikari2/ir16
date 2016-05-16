@@ -5,10 +5,10 @@ import urllib.parse
 import urllib.request
 
 def analyze(texts):
-    apikey = '97206d6e38358170e97b3600b84cbc62'
+    apikey = 'ec55681e9caaa80c977bfcadcbdb9bea'
     endpoint = 'https://api.gavagai.se/v3/tonality'
 
-    text_payload = [{'body': t, 'id': i} for i,t in enumerate(texts)]
+    text_payload = [{'body': t, 'id': i} for i, t in enumerate(texts)]
 
     payload = {
         "language": "en",
