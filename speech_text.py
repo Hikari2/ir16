@@ -2,7 +2,7 @@ import speech_recognition as sr
 import os
 
 def translate(file):
-    file = 'audio/Us_English_Broadband_Sample_2.wav'
+    #file = 'audio/Us_English_Broadband_Sample_2.wav'
     # obtain path to file in the same folder as this script
     from os import path
     full_path = path.dirname(path.realpath(__file__))
