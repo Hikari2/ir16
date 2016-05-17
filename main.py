@@ -9,8 +9,14 @@ USED_FIELDS = ['positivity', 'negativity']
 N = [20]
 
 GROUPS = [
-    {"brands_grouped": [["razer","razor"]], "brands": ["razer","razor"],
-     "file":'Razer_Deathadder_2013_Optical_Gaming_Mouse_Unboxing_Overview'}
+    {"brands_grouped": [["razer","razor"]],
+    "brands": ["razer","razor"],
+     "file":'Razer_Deathadder_2013_Optical_Gaming_Mouse_Unboxing_Overview'},
+    {
+    "brands_grouped": [["dick", "Razor", "Pants", "Ubisoft", "SteelSeries", "CM Storm"]],
+    "brands": ["dick", "Razor", "Pants", "Ubisoft", "SteelSeries", "CM Storm"],
+    "file":'Critical_Review-_Watch_Dogs_-_Buggy_Unoptimized_Di'
+    }
 ]
 
 USE_SUBPROCESS = not 'windows' in [arg.lower() for arg in sys.argv]
@@ -18,6 +24,9 @@ USE_SUBPROCESS = not 'windows' in [arg.lower() for arg in sys.argv]
 
 def main():
     for group in GROUPS:
+        print()
+        print()
+        print(" --------- ANALYSING %s ---------"%group["file"])
         for n in N:
             run_analyse(group, n)
 
@@ -32,6 +41,7 @@ def run_analyse(group, n):
         brands = group["brands"]
     else:
         brands = group["brands_grouped"]
+
     
     for brand in brands:
         # Split into n-grams or whatever here
@@ -49,19 +59,21 @@ def run_analyse(group, n):
             # Calculate the final sentiment
             verdict = extract_aggregate(scores)
 
-            print("--- RESULTS FOR %s---"%brand)
+            print("--- RESULTS FOR %s ---"%brand)
             for key, value in verdict.items():
                 print(key, value)
+        else:
+            print("Found no mentions of %s"%brand)
 
 # Extract sentences containing brand name
 # Using Unix command shell
-def extract_sentences_grep(filename, brand):
-    command = "./grep.sh " + filename + '.txt ' + brand
-    subprocess.call(command, shell=True)
-    with open('grepResult.txt', 'r') as grepResult:
-        sentences = grepResult.readlines()
-    return sentences
-
+def extract_sentences(filename, brand):
+    try:
+        grepResult = subprocess.check_output(['grep', '-i', brand.strip(), 'text_to_speech/'+filename+'.txt'], universal_newlines=True)
+        sentences = grepResult.splitlines()
+        return sentences
+    except:
+        return
 
 # Extract sentences containing brand name
 def extract_sentences(text, brands, n):
