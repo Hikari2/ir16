@@ -1,20 +1,77 @@
 import speech_text
 import os
 import tonality
-import json
+import sys
 import numpy as np
 import subprocess
 
 USED_FIELDS = ['positivity', 'negativity']
+N = [20]
 
-AUDIO = 'Us_English_Broadband_Sample_2'
+GROUPS = [
+    {"brands_grouped": [["razer","razor"]], "brands": ["razer","razor"],
+     "file":'Razer_Deathadder_2013_Optical_Gaming_Mouse_Unboxing_Overview'}
+]
+
+USE_SUBPROCESS = not 'windows' in [arg.lower() for arg in sys.argv]
+
+
+def main():
+    for group in GROUPS:
+        for n in N:
+            run_analyse(group, n)
+
+def run_analyse(group, n):
+    print("Speech to text")
+    text = speech_text.translate('audio/'+group["file"]+'.wav')
+
+    print("Sentiment analysis")
+    # Iterate through brands
+
+    if USE_SUBPROCESS:
+        brands = group["brands"]
+    else:
+        brands = group["brands_grouped"]
+    
+    for brand in brands:
+        # Split into n-grams or whatever here
+        if USE_SUBPROCESS:
+            sentences = extract_sentences_grep(group["file"], brand)
+        else:
+            sentences = extract_sentences(text, brand, n)
+
+        if sentences:
+            result = tonality.analyze(sentences)
+                
+            # Get the fields we are interested in
+            scores = [extract_scores(sentiments) for sentiments in result["texts"]]
+
+            # Calculate the final sentiment
+            verdict = extract_aggregate(scores)
+
+            print("--- RESULTS FOR %s---"%brand)
+            for key, value in verdict.items():
+                print(key, value)
+
+# Extract sentences containing brand name
+# Using Unix command shell
+def extract_sentences_grep(filename, brand):
+    command = "./grep.sh " + filename + '.txt ' + brand
+    subprocess.call(command, shell=True)
+    with open('grepResult.txt', 'r') as grepResult:
+        sentences = grepResult.readlines()
+    return sentences
 
 
 # Extract sentences containing brand name
-def extract_sentences(text, brand):
-    subprocess.call("./grep.sh " + AUDIO + '.txt ' + brand, shell=True)
-    with open('grepResult.txt', 'r') as grepResult:
-        sentences = grepResult.readlines()
+def extract_sentences(text, brands, n):
+    words = [word.lower() for word in text.split()]
+    sentences = []
+    for i, word in enumerate(words):
+        if word in brands:
+            scope = (max(i-n,0), min(len(words)-1,i+1+n))
+            sentence = " ".join(words[scope[0]:scope[1]])
+            sentences.append(sentence)
     return sentences
 
 
@@ -73,33 +130,5 @@ def pretty_print_response(response):
                     print(key,value)
 
 
-
-
-
-
-
-
-
-print("Speech to text")
-text = speech_text.translate('audio/'+AUDIO+'.wav')
-
-print("Sentiment analysis")
-# Iterate through brands
-with open('brands.txt', 'r') as brands:
-    for brand in brands:
-        
-        # Split into n-grams or whatever here
-        sentences = extract_sentences(text, brand)
-
-        if sentences:
-            result = tonality.analyze(sentences)
-                
-            # Get the fields we are interested in
-            scores = [extract_scores(sentiments) for sentiments in result["texts"]]
-
-            # Calculate the final sentiment
-            verdict = extract_aggregate(scores)
-
-            print("--- RESULTS FOR %s---"%brand)
-            for key, value in verdict.items():
-                print(key, value)
+if __name__ == '__main__':
+    main()
