@@ -7,16 +7,18 @@ import subprocess
 
 USED_FIELDS = ['positivity', 'negativity']
 
-AUDIO = 'Us_English_Broadband_Sample_2'
+AUDIO = 'TOP_5_GAMING_MICE_-_2015_Edition'
 
 
 # Extract sentences containing brand name
 def extract_sentences(text, brand):
-    subprocess.call("./grep.sh " + AUDIO + '.txt ' + brand, shell=True)
-    with open('grepResult.txt', 'r') as grepResult:
-        sentences = grepResult.readlines()
-    return sentences
-
+    try:
+        grepResult = subprocess.check_output(['grep', '-i', brand.strip(), 'text_to_speech/'+AUDIO+'.txt'], universal_newlines=True)
+        sentences = grepResult.splitlines()
+        return sentences
+    except:
+        return
+        
 
 # The aggregate function for all sentences
 def extract_aggregate(sentiment_list):
@@ -82,7 +84,6 @@ def pretty_print_response(response):
 
 print("Speech to text")
 text = speech_text.translate('audio/'+AUDIO+'.wav')
-
 print("Sentiment analysis")
 # Iterate through brands
 with open('brands.txt', 'r') as brands:
