@@ -13,8 +13,8 @@ GROUPS = [
     "brands": ["razer","razor"],
      "file":'Razer_Deathadder_2013_Optical_Gaming_Mouse_Unboxing_Overview'},
     {
-    "brands_grouped": [["dick", "Razor", "Pants", "Ubisoft", "SteelSeries", "CM Storm"]],
-    "brands": ["dick", "Razor", "Pants", "Ubisoft", "SteelSeries", "CM Storm"],
+    "brands_grouped": [["dick", "razor", "pants", "ubisoft", "steelseries", "cm storm"]],
+    "brands": ["dick", "razor", "pants", "ubisoft", "steelSeries", "cm storm"],
     "file":'Critical_Review-_Watch_Dogs_-_Buggy_Unoptimized_Di'
     }
 ]
@@ -40,7 +40,7 @@ def run_analyse(group, n):
     if USE_SUBPROCESS:
         brands = group["brands"]
     else:
-        brands = group["brands_grouped"]
+        brands = [[name.lower() for name in g] for g in group["brands_grouped"]]
 
     
     for brand in brands:
