@@ -4,20 +4,10 @@ import tonality
 import sys
 import numpy as np
 import subprocess
+from review_input import GROUPS
 
 USED_FIELDS = ['positivity', 'negativity']
 N = [20]
-
-GROUPS = [
-    {"brands_grouped": [["razer","razor"]],
-    "brands": ["razer","razor"],
-     "file":'Razer_Deathadder_2013_Optical_Gaming_Mouse_Unboxing_Overview'},
-    {
-    "brands_grouped": [["dick", "razor", "pants", "ubisoft", "steelseries", "cm storm"]],
-    "brands": ["dick", "razor", "pants", "ubisoft", "steelSeries", "cm storm"],
-    "file":'Critical_Review-_Watch_Dogs_-_Buggy_Unoptimized_Di'
-    }
-]
 
 USE_SUBPROCESS = not 'windows' in [arg.lower() for arg in sys.argv]
 
@@ -28,6 +18,8 @@ def main():
         print()
         print(" --------- ANALYSING %s ---------"%group["file"])
         for n in N:
+            print()
+            print("RESULTS FOR N = %s"%n)
             run_analyse(group, n)
 
 def run_analyse(group, n):
