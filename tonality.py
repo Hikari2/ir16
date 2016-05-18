@@ -5,8 +5,10 @@ import urllib.parse
 import urllib.request
 from saved_gavagai import gavagai_analysis
 
+first_run = [True]
+
 def analyze(texts):
-    apikey = '0657d10bf91d916f8b486bb8c1660151'
+    apikey = '31dcf55cda2419477ca1f129953126d7'
     endpoint = 'https://api.gavagai.se/v3/tonality'
 
     # Remove new lines
@@ -18,6 +20,17 @@ def analyze(texts):
     saved = [(i,gavagai_analysis[t]) for i,t in enumerate(texts) if t in gavagai_analysis]
 
     if len(text_payload) > 0:
+        if first_run[0]:
+            print("GAVAGAI STATS:")
+            print("Total: %s"%len(texts))
+            print("Cached: %s"%len(saved))
+            print("New: %s"%len(text_payload))
+    
+            first_run[0] = False
+        else:
+            for pay in text_payload:
+                print(pay["body"])
+            raise Exception("Caching failed")
         payload = {
             "language": "en",
             "texts": text_payload
@@ -36,7 +49,7 @@ def analyze(texts):
         as_string = response.decode("UTF-8")
         as_json = json.loads(as_string)
     else:
-        print("all " + str(len(saved)) + " texts are saved")
+    #    print("all " + str(len(saved)) + " texts are saved")
         as_json = {"texts": []}
     
     # Save new
@@ -44,6 +57,7 @@ def analyze(texts):
         for sentiments in as_json["texts"]:
             original_text = next(t["body"] for t in text_payload if str(t["id"]) == sentiments["id"])
             print('gavagai_analysis["' + original_text + '"]=' + str(sentiments["tonality"]),file=f)
+            gavagai_analysis[original_text] = sentiments["tonality"]
 
     # Load local
     for entry in saved:

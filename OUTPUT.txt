@@ -1,0 +1,210 @@
+
+
+ --------- ANALYSING (Positive Corsair)Corsair_Gaming_K70_RGB_Keyboard_vs_Razer_Blackwidow_Chroma_-_Comparison_Review  ---------
+['razor']       N=5 | Postive | P 0.03 | N 0.00
+['corsair']     N=5 | Negative | P 0.09 | N 0.09
+['razor']       N=10 | Postive | P 0.65 | N 0.00
+['corsair']     N=10 | Postive | P 0.27 | N 0.18
+['razor']       N=15 | Postive | P 1.05 | N 0.20
+['corsair']     N=15 | Postive | P 0.64 | N 0.36
+['razor']       N=20 | Postive | P 1.25 | N 0.20
+['corsair']     N=20 | Postive | P 0.82 | N 0.36
+['razor']       N=25 | Postive | P 1.65 | N 0.20
+['corsair']     N=25 | Postive | P 1.18 | N 0.36
+['razor']       N=30 | Postive | P 2.05 | N 0.25
+['corsair']     N=30 | Postive | P 1.11 | N 0.36
+
+
+ --------- ANALYSING (Positive)DOOM_(2016)_PC_Game_Review ---------
+['doom']        N=5 | Negative | P 0.12 | N 0.28
+['doom']        N=10 | Negative | P 0.12 | N 0.58
+['doom']        N=15 | Negative | P 0.38 | N 0.58
+['doom']        N=20 | Negative | P 0.62 | N 0.83
+['doom']        N=25 | Postive | P 1.25 | N 1.11
+['doom']        N=30 | Negative | P 0.88 | N 1.11
+
+
+ --------- ANALYSING (Positive)Ducky_Shine_Mini_-_Mechanical_60_ Keyboard ---------
+['ducky']       N=5 | Negative | P 0.00 | N 0.33
+['ducky']       N=10 | Negative | P 0.17 | N 0.50
+['ducky']       N=15 | Postive | P 0.83 | N 0.50
+['ducky']       N=20 | Postive | P 1.33 | N 0.50
+['ducky']       N=25 | Postive | P 1.33 | N 0.67
+['ducky']       N=30 | Postive | P 1.33 | N 0.50
+
+
+ --------- ANALYSING (Positive)HTC_10_Review ---------
+['htc'] N=5 | Postive | P 0.27 | N 0.13
+['htc'] N=10 | Postive | P 0.45 | N 0.32
+['htc'] N=15 | Postive | P 0.76 | N 0.33
+['htc'] N=20 | Postive | P 1.07 | N 0.37
+['htc'] N=25 | Postive | P 1.51 | N 0.46
+['htc'] N=30 | Postive | P 1.47 | N 0.46
+
+
+ --------- ANALYSING (Positive)HTC_Vive_VR_review ---------
+['htc'] N=5 | Negative | P 0.00 | N 0.00
+['htc'] N=10 | Negative | P 0.00 | N 0.00
+['htc'] N=15 | Postive | P 1.50 | N 0.00
+['htc'] N=20 | Postive | P 2.08 | N 0.00
+['htc'] N=25 | Postive | P 2.08 | N 0.00
+['htc'] N=30 | Postive | P 2.08 | N 0.00
+
+
+ --------- ANALYSING (Positive)iPhone_6s_Review! ---------
+['apple']       N=5 | Postive | P 0.29 | N 0.14
+['iphone']      N=5 | Postive | P 0.27 | N 0.00
+['apple']       N=10 | Postive | P 0.43 | N 0.14
+['iphone']      N=10 | Postive | P 0.45 | N 0.09
+['apple']       N=15 | Postive | P 0.43 | N 0.14
+['iphone']      N=15 | Postive | P 0.91 | N 0.23
+['apple']       N=20 | Postive | P 1.00 | N 0.43
+['iphone']      N=20 | Postive | P 1.00 | N 0.45
+['apple']       N=25 | Postive | P 1.14 | N 0.43
+['iphone']      N=25 | Postive | P 1.36 | N 0.55
+['apple']       N=30 | Postive | P 1.29 | N 0.43
+['iphone']      N=30 | Postive | P 1.50 | N 0.41
+
+
+ --------- ANALYSING (Positive)Logitech_G700s_Wireless_Gaming_Mouse_Unboxing_Overview ---------
+['logitech']    N=5 | Postive | P 0.46 | N 0.14
+['logitech']    N=10 | Postive | P 0.46 | N 0.14
+['logitech']    N=15 | Postive | P 0.89 | N 0.14
+['logitech']    N=20 | Postive | P 0.89 | N 0.14
+['logitech']    N=25 | Postive | P 1.03 | N 0.14
+['logitech']    N=30 | Postive | P 1.03 | N 0.17
+
+
+ --------- ANALYSING (Positive)Razer_Deathadder_2013_Optical_Gaming_Mouse_Unboxing_Overview ---------
+['razor', 'razer']      N=5 | Negative | P 0.00 | N 1.00
+['razor', 'razer']      N=10 | Negative | P 0.25 | N 1.00
+['razor', 'razer']      N=15 | Negative | P 0.50 | N 1.50
+['razor', 'razer']      N=20 | Negative | P 0.75 | N 1.50
+['razor', 'razer']      N=25 | Negative | P 1.00 | N 1.50
+['razor', 'razer']      N=30 | Negative | P 1.00 | N 1.50
+
+
+ --------- ANALYSING (Positive)Samsung_Galaxy_S4_Review ---------
+['samsung']     N=5 | Postive | P 0.20 | N 0.00
+['samsung', 'galaxy']   N=5 | Postive | P 0.22 | N 0.04
+['galaxy']      N=5 | Postive | P 0.24 | N 0.07
+['samsung']     N=10 | Postive | P 0.40 | N 0.00
+['samsung', 'galaxy']   N=10 | Postive | P 0.64 | N 0.04
+['galaxy']      N=10 | Postive | P 0.81 | N 0.07
+['samsung']     N=15 | Postive | P 0.60 | N 0.00
+['samsung', 'galaxy']   N=15 | Postive | P 0.93 | N 0.04
+['galaxy']      N=15 | Postive | P 1.16 | N 0.07
+['samsung']     N=20 | Postive | P 0.70 | N 0.00
+['samsung', 'galaxy']   N=20 | Postive | P 1.02 | N 0.04
+['galaxy']      N=20 | Postive | P 1.25 | N 0.07
+['samsung']     N=25 | Postive | P 0.70 | N 0.00
+['samsung', 'galaxy']   N=25 | Postive | P 1.11 | N 0.04
+['galaxy']      N=25 | Postive | P 1.40 | N 0.07
+['samsung']     N=30 | Postive | P 0.82 | N 0.00
+['samsung', 'galaxy']   N=30 | Postive | P 1.29 | N 0.04
+['galaxy']      N=30 | Postive | P 1.63 | N 0.07
+
+
+ --------- ANALYSING (Positive)Uncharted_4_-_Game_Review ---------
+['uncharted']   N=5 | Postive | P 0.88 | N 0.31
+['uncharted']   N=10 | Postive | P 1.38 | N 0.45
+['uncharted']   N=15 | Postive | P 1.63 | N 0.69
+['uncharted']   N=20 | Postive | P 2.19 | N 0.75
+['uncharted']   N=25 | Postive | P 2.51 | N 0.75
+['uncharted']   N=30 | Postive | P 2.69 | N 1.00
+
+
+ --------- ANALYSING (Negative)An_honest_LG_G5_review ---------
+['lg']  N=5 | Postive | P 0.25 | N 0.08
+['lg']  N=10 | Negative | P 0.25 | N 0.25
+['lg']  N=15 | Postive | P 0.58 | N 0.25
+['lg']  N=20 | Postive | P 1.08 | N 0.42
+['lg']  N=25 | Postive | P 1.52 | N 0.50
+['lg']  N=30 | Postive | P 1.60 | N 0.58
+
+
+ --------- ANALYSING (Negative)Blackberry_playbook_review_(in_2015) ---------
+['blackberry']  N=5 | Negative | P 0.00 | N 0.00
+['blackberry']  N=10 | Negative | P 0.00 | N 2.00
+['blackberry']  N=15 | Negative | P 0.00 | N 2.33
+['blackberry']  N=20 | Negative | P 0.00 | N 2.33
+['blackberry']  N=25 | Negative | P 0.33 | N 2.67
+['blackberry']  N=30 | Negative | P 0.33 | N 2.33
+
+
+ --------- ANALYSING (Negative)Critical_Review-_Watch_Dogs_-_Buggy_Unoptimized_Di ---------
+['ubisoft', 'watch']    N=5 | Negative | P 0.00 | N 0.00
+['ubisoft', 'watch']    N=10 | Negative | P 0.00 | N 0.00
+['ubisoft', 'watch']    N=15 | Negative | P 0.00 | N 0.50
+['ubisoft', 'watch']    N=20 | Negative | P 0.00 | N 0.50
+['ubisoft', 'watch']    N=25 | Negative | P 0.00 | N 0.50
+['ubisoft', 'watch']    N=30 | Negative | P 0.00 | N 0.56
+
+
+ --------- ANALYSING (Negative)Destiny_Review ---------
+['destiny']     N=5 | Negative | P 0.00 | N 0.14
+['destiny']     N=10 | Postive | P 0.43 | N 0.14
+['destiny']     N=15 | Postive | P 0.63 | N 0.24
+['destiny']     N=20 | Postive | P 0.63 | N 0.34
+['destiny']     N=25 | Postive | P 0.93 | N 0.34
+['destiny']     N=30 | Postive | P 1.13 | N 0.24
+
+
+ --------- ANALYSING (Negative)Logitech_G910_Gaming_Mechanical_Keyboard_-_Romer-G_Switches ---------
+['logitech']    N=5 | Negative | P 0.22 | N 0.22
+['logitech']    N=10 | Postive | P 0.44 | N 0.22
+['logitech']    N=15 | Negative | P 0.67 | N 0.67
+['logitech']    N=20 | Postive | P 1.00 | N 0.67
+['logitech']    N=25 | Postive | P 1.33 | N 1.22
+['logitech']    N=30 | Postive | P 1.79 | N 1.11
+
+
+ --------- ANALYSING (Negative)MORPHE_BRAND_REVIEW ---------
+['murphy']      N=5 | Negative | P 0.00 | N 0.50
+['murphy']      N=10 | Negative | P 0.25 | N 0.25
+['murphy']      N=15 | Negative | P 0.25 | N 0.25
+['murphy']      N=20 | Negative | P 0.25 | N 0.25
+['murphy']      N=25 | Negative | P 0.25 | N 0.25
+['murphy']      N=30 | Negative | P 0.25 | N 0.25
+
+
+ --------- ANALYSING (Negative)Razer_Blade_Stealth_The_Bad_Things!!! ---------
+['razor']       N=5 | Negative | P 0.00 | N 0.50
+['razor']       N=10 | Negative | P 0.17 | N 0.67
+['razor']       N=15 | Negative | P 0.50 | N 0.83
+['razor']       N=20 | Negative | P 0.83 | N 1.00
+['razor']       N=25 | Negative | P 1.00 | N 1.83
+['razor']       N=30 | Negative | P 0.83 | N 1.50
+
+
+ --------- ANALYSING (Negative)The_Order_1886_[Critical_Review] ---------
+['order', 'dawn', 'developer']  N=5 | Postive | P 0.50 | N 0.00
+['order', 'dawn', 'developer']  N=10 | Postive | P 0.50 | N 0.00
+['order', 'dawn', 'developer']  N=15 | Postive | P 0.50 | N 0.00
+['order', 'dawn', 'developer']  N=20 | Negative | P 0.50 | N 0.50
+['order', 'dawn', 'developer']  N=25 | Negative | P 0.50 | N 1.00
+['order', 'dawn', 'developer']  N=30 | Negative | P 0.50 | N 1.00
+
+
+ --------- ANALYSING (Negative)Whats_Wrong_with_Fallout_4_Critical_review_[gamepressure.com] ---------
+['bethesda', 'fallout'] N=5 | Negative | P 0.14 | N 0.31
+['bethesda', 'fallout'] N=10 | Negative | P 0.39 | N 0.60
+['bethesda', 'fallout'] N=15 | Postive | P 0.92 | N 0.78
+['bethesda', 'fallout'] N=20 | Postive | P 0.97 | N 0.95
+['bethesda', 'fallout'] N=25 | Postive | P 1.11 | N 0.95
+['bethesda', 'fallout'] N=30 | Postive | P 1.11 | N 1.09
+
+
+ --------- ANALYSING (Negative)Windows_10_Review_7_Things_I_Dont_Like ---------
+['microsoft']   N=5 | Negative | P 0.00 | N 0.00
+['windows', 'microsoft']        N=5 | Postive | P 0.21 | N 0.19
+['microsoft']   N=10 | Postive | P 0.67 | N 0.00
+['windows', 'microsoft']        N=10 | Postive | P 0.44 | N 0.33
+['microsoft']   N=15 | Postive | P 0.78 | N 0.11
+['windows', 'microsoft']        N=15 | Negative | P 0.53 | N 0.58
+['microsoft']   N=20 | Postive | P 0.78 | N 0.33
+['windows', 'microsoft']        N=20 | Negative | P 0.67 | N 0.75
+['microsoft']   N=25 | Postive | P 0.78 | N 0.44
+['windows', 'microsoft']        N=25 | Negative | P 0.80 | N 0.83
+['microsoft']   N=30 | Postive | P 1.00 | N 0.44
+['windows', 'microsoft']        N=30 | Postive | P 0.90 | N 0.90

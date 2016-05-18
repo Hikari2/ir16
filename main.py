@@ -7,27 +7,38 @@ import subprocess
 from review_input import GROUPS
 
 USED_FIELDS = ['positivity', 'negativity']
-N = [20]
+N = [5,10,15,20,25,30]
 
 USE_SUBPROCESS = not 'windows' in [arg.lower() for arg in sys.argv]
 
+MEGA_QUERY = True
+TIGHT_PRINT = True
 
 def main():
+
+    # Only uses one gavagai query to reduce request numbers
+    if MEGA_QUERY == True:
+        sentences = []
+        for group in GROUPS:
+            for n in N:
+                brands = [[name.lower() for name in g] for g in group["brands_grouped"]]
+                for brand in brands:
+                    text = speech_text.translate('audio/'+group["file"]+'.wav')
+                    sentences += extract_sentences(text, brand, n)
+        tonality.analyze(sentences) # Uses one query for all senctences and caches the results on disk
+
     for group in GROUPS:
         print()
         print()
         print(" --------- ANALYSING %s ---------"%group["file"])
         for n in N:
-            print()
-            print("RESULTS FOR N = %s"%n)
+            if not TIGHT_PRINT:
+                print()
+                print("RESULTS FOR N = %s"%n)
             run_analyse(group, n)
 
 def run_analyse(group, n):
-    print("Speech to text")
     text = speech_text.translate('audio/'+group["file"]+'.wav')
-
-    print("Sentiment analysis")
-    # Iterate through brands
 
     if USE_SUBPROCESS:
         brands = group["brands"]
@@ -51,9 +62,13 @@ def run_analyse(group, n):
             # Calculate the final sentiment
             verdict = extract_aggregate(scores)
 
-            print("--- RESULTS FOR %s ---"%brand)
-            for key, value in verdict.items():
-                print(key, value)
+            if not TIGHT_PRINT:
+                print("--- RESULTS FOR %s ---"%brand)
+                for key, value in verdict.items():
+                    print(key, value)
+            else:
+                best = "Postive" if verdict["positivity"]['score'] > verdict["negativity"]['score'] else "Negative"
+                print("%s\tN=%s | %s | P %s | N %s"%(brand,n,best,"{0:.2f}".format(verdict["positivity"]['score']),"{0:.2f}".format(verdict["negativity"]['score'])))
         else:
             print("Found no mentions of %s"%brand)
 

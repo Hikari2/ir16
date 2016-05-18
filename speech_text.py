@@ -14,7 +14,7 @@ def translate(file):
         os.makedirs(directory)
 
     if os.path.isfile(directory+"/"+name):
-        print(file + " is already processed, returning from disk")
+   #     print(file + " is already processed, returning from disk")
         with open(directory+"/"+name,"r") as f:
             ret_str = ""
             for line in f:
